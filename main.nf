@@ -20,6 +20,8 @@ workflow {
 	log.info("  --input_folder:    folder with the FragPipe results")
 	log.info("  --uniprot_annotation_filename:  uniprot annotation file")
 	log.info("  --surfy_filename:  surfy annotation file")
+	log.info("  --reduce_to_labels: reduce matrices to samples from class_label1 and class_label2")
+	log.info("  --drop_samples:    list of sample names to be dropped")	
 	log.info("  --quantile_threshold:  quantile threshold for removing")
 	log.info("                         low intensity proteins")
 	log.info("  --min_peptide_count:  minimum number of peptides per protein")
@@ -34,6 +36,7 @@ workflow {
 	log.info("++++++++++=================================================")
     }
 
+
     noxWorkflow(params.manifest_fp,
 		params.template_ipynb,
 		params.class_label1,
@@ -41,6 +44,8 @@ workflow {
 		params.input_folder,
 		params.uniprot_annotation_filename,
 		params.surfy_filename,
+		params.reduce_to_labels,
+		params.drop_samples,
 		params.quantile_threshold,
 		params.min_peptide_count,
 		params.normalize,

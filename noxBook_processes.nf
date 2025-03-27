@@ -14,6 +14,8 @@ process getClasses {
 
 process noxPapermill {
     tag "$template_ipynb"
+    cpus 2
+    memory 5.GB
 
     publishDir 'Results/Jhub', mode: 'copy'
 
@@ -24,6 +26,8 @@ process noxPapermill {
     val input_folder
     path uniprot_annotation_filename
     path surfy_filename
+    val reduce_to_labels
+    val drop_samples
     val quantile_threshold
     val min_peptide_count
     val normalize
@@ -43,6 +47,8 @@ process noxPapermill {
 	-p class_label2 $class_label2 \
 	-p uniprot_annotation_filename $uniprot_annotation_filename \
 	-p surfy_filename $surfy_filename \
+	-p reduce_to_labels $reduce_to_labels \
+	-p drop_samples "$drop_samples" \
 	-p quantile_threshold $quantile_threshold \
 	-p min_peptide_count $min_peptide_count \
 	-p normalize $normalize \
@@ -57,6 +63,8 @@ process noxPapermill {
 
 process noxToHtml{
     tag "$nox_ipynb"
+    cpus 1
+    memory 10.GB
 
     publishDir 'Results/Jhub', mode: 'copy'
 
@@ -71,3 +79,5 @@ process noxToHtml{
     jupyter-nbconvert --to html $nox_ipynb
     """
 }
+
+
