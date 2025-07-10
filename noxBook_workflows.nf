@@ -27,7 +27,7 @@ workflow noxWorkflow {
     
     main:
     classes_fp = Channel.fromPath(file("$experiment_annotation_fp"))
-                 .splitCsv(sep: '\t', header: false)
+                 .splitCsv(sep: '\t', header: true)
                  .map { it[3] }  // Extract the fourth column
     
     // Extract all classes from the FragPipe annotation file
