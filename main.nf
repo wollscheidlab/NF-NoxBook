@@ -37,7 +37,7 @@ workflow {
     }
 
 
-    noxWorkflow(params.manifest_fp,
+    noxWorkflow(params.experiment_annotation_fp,
 		params.template_ipynb,
 		params.class_label1,
 		params.class_label2,

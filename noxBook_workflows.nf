@@ -8,7 +8,7 @@ include {getClasses;
 
 workflow noxWorkflow {
     take:
-    manifest_fp
+    experiment_annotation_fp
     template_ipynb
     class_label1
     class_label2
@@ -26,9 +26,9 @@ workflow noxWorkflow {
     obo_filename
     
     main:
-    classes_fp = Channel.fromPath(file("$manifest_fp"))
+    classes_fp = Channel.fromPath(file("$experiment_annotation_fp"))
                  .splitCsv(sep: '\t', header: false)
-                 .map { it[1] }  // Extract the second column
+                 .map { it[3] }  // Extract the fourth column
     
     // Extract all classes from the FragPipe annotation file
     classes = classes_fp
@@ -38,9 +38,9 @@ workflow noxWorkflow {
 
     // Generate combinations based on whether class_label2 is provided
     combinations = class_label2 ?
-        // If class_label2 is provided, only compare manifest classes vs class_label2
+        // If class_label2 is provided, only compare experiment_annotation classes vs class_label2
         classes
-        .filter { it != class_label2 } // Exclude class_label2 from the manifest classes
+        .filter { it != class_label2 } // Exclude class_label2 from the experiment_annotation classes
         .map { a -> 
             [a, class_label2] // No need to sort since we want class_label2 as the second element
         } :
