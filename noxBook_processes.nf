@@ -23,9 +23,14 @@ process noxPapermill {
     // We start from nox_template.ipynb
     path template_ipynb
     tuple val(class_label1), val(class_label2)
+    // This is used by lux_noctis that runs inside the notebook even
+    // though it's not a param or papermill
+    path fragpipe_workflow_fp
     val input_folder
-    val uniprot_annotation_filename
-    val surfy_filename
+    // We use path instead of val to make sure the file is available
+    // inside the singularity container
+    path uniprot_annotation_filename
+    path surfy_filename
     val reduce_to_labels
     val drop_samples
     val quantile_threshold
@@ -33,8 +38,8 @@ process noxPapermill {
     val normalize
     val impute
     val filter_cv
-    val gaf_filename
-    val obo_filename
+    path gaf_filename
+    path obo_filename
 
     output:
     path "nox_${class_label1}_vs_${class_label2}.ipynb", emit: ipynb

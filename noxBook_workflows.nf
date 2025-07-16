@@ -13,6 +13,7 @@ workflow noxWorkflow {
     class_label1
     class_label2
     input_folder
+    fragpipe_workflow_fp
     uniprot_annotation_filename
     surfy_filename
     reduce_to_labels
@@ -58,6 +59,7 @@ workflow noxWorkflow {
     // Prepare the ipynb for each binary class combination
     noxPapermill(file("$baseDir/Notebooks/$template_ipynb"),
                  combinations,
+		 fragpipe_workflow_fp,
                  input_folder,
                  uniprot_annotation_filename,
                  surfy_filename,

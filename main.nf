@@ -42,6 +42,7 @@ workflow {
 		params.class_label1,
 		params.class_label2,
 		params.input_folder,
+		params.fragpipe_workflow_fp,
 		params.uniprot_annotation_filename,
 		params.surfy_filename,
 		params.reduce_to_labels,
