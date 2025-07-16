@@ -43,7 +43,6 @@ process noxPapermill {
 
     output:
     path "nox_${class_label1}_vs_${class_label2}.ipynb", emit: ipynb
-    path "volcano_batch_normalized.html", emit: volcano
 
     script:
     """
