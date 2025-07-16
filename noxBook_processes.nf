@@ -18,7 +18,7 @@ process noxPapermill {
     memory 5.GB
 
     publishDir 'Results/Jhub', mode: 'copy'
-
+    
     input:
     // We start from nox_template.ipynb
     path template_ipynb
