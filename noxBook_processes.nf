@@ -24,8 +24,8 @@ process noxPapermill {
     path template_ipynb
     tuple val(class_label1), val(class_label2)
     val input_folder
-    path uniprot_annotation_filename
-    path surfy_filename
+    val uniprot_annotation_filename
+    val surfy_filename
     val reduce_to_labels
     val drop_samples
     val quantile_threshold
