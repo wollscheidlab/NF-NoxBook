@@ -45,10 +45,12 @@ process noxPapermill {
     path "nox_${class_label1}_vs_${class_label2}.ipynb", emit: ipynb
     path "top-table_${class_label1}_vs_${class_label2}.csv", emit: toptable
     path "singularities_${class_label1}.csv", emit: singularities
+    path "significant_peptides_${class_label1}.csv", emit: sig_peptides
 
     script:
     """
     papermill $template_ipynb nox_${class_label1}_vs_${class_label2}.ipynb \
+	--kernel python3_parallel \
 	-p class_label1 $class_label1 \
 	-p class_label2 $class_label2 \
 	-p uniprot_annotation_filename $uniprot_annotation_filename \
