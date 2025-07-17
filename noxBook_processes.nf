@@ -43,6 +43,8 @@ process noxPapermill {
 
     output:
     path "nox_${class_label1}_vs_${class_label2}.ipynb", emit: ipynb
+    path "top-table_${class_label1}_vs_${class_label2}.csv", emit: toptable
+    path "singularities_${class_label1}.csv", emit: singularities
 
     script:
     """
