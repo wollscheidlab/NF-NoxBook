@@ -22,7 +22,10 @@ workflow noxWorkflow {
     min_peptide_count
     peptide_missingness_cutoff
     normalize
+    normalize_peptide
+    normalize_protein
     impute
+    impute_protein
     filter_cv
     gaf_filename
     obo_filename
@@ -70,7 +73,10 @@ workflow noxWorkflow {
                  min_peptide_count,
 		 peptide_missingness_cutoff,
                  normalize,
+		 normalize_peptide,
+		 normalize_protein,
                  impute,
+		 impute_protein,
                  filter_cv,
                  gaf_filename,
                  obo_filename)

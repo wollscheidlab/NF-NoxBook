@@ -26,8 +26,11 @@ workflow {
 	log.info("                         low intensity proteins")
 	log.info("  --min_peptide_count:  minimum number of peptides per protein")
 	log.info("  --peptide_missingness_cutoff: highest tolerated fraction of missing values")
-	log.info("  --normalize:	   median normalize the data")
-	log.info("  --impute:	   impute missing values")
+	log.info("  --normalize:	   median normalize the data (DEPRECATED)")
+	log.info("  --normalize_peptide:   median normalize the data at peptide level")
+	log.info("  --normalize_protein:   median normalize the data at protein level")	
+	log.info("  --impute:	   impute missing values (DEPRECATED)")	
+	log.info("  --impute_protein:	   impute missing values at protein level")	
 	log.info("  --filter_cv:	   filter proteins based on CV")
 	log.info("  --gaf_filename:	   GO annotation file")
 	log.info("  --obo_filename:	   GO OBO file")
@@ -52,7 +55,10 @@ workflow {
 		params.min_peptide_count,
 		params.peptide_missingness_cutoff,
 		params.normalize,
+		params.normalize_peptide,
+		params.normalize_protein,
 		params.impute,
+		params.impute_protein,
 		params.filter_cv,
 		params.gaf_filename,
 		params.obo_filename

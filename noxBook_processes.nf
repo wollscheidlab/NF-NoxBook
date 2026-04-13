@@ -37,7 +37,10 @@ process noxPapermill {
     val min_peptide_count
     val peptide_missingness_cutoff
     val normalize
+    val normalize_peptide
+    val normalize_protein
     val impute
+    val impute_protein
     val filter_cv
     path gaf_filename
     path obo_filename
@@ -62,7 +65,10 @@ process noxPapermill {
 	-p min_peptide_count $min_peptide_count \
 	-p peptide_missingness_cutoff $peptide_missingness_cutoff \
 	-p normalize $normalize \
+	-p normalize_peptide $normalize_peptide \
+	-p normalize_protein $normalize_protein \
 	-p impute $impute \
+	-p impute_protein $impute_protein \
 	-p filter_cv $filter_cv \
 	-p gaf_filename $gaf_filename \
 	-p obo_filename $obo_filename \
