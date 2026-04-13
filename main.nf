@@ -25,6 +25,7 @@ workflow {
 	log.info("  --quantile_threshold:  quantile threshold for removing")
 	log.info("                         low intensity proteins")
 	log.info("  --min_peptide_count:  minimum number of peptides per protein")
+	log.info("  --peptide_missingness_cutoff: highest tolerated fraction of missing values")
 	log.info("  --normalize:	   median normalize the data")
 	log.info("  --impute:	   impute missing values")
 	log.info("  --filter_cv:	   filter proteins based on CV")
@@ -49,6 +50,7 @@ workflow {
 		params.drop_samples,
 		params.quantile_threshold,
 		params.min_peptide_count,
+		params.peptide_missingness_cutoff,
 		params.normalize,
 		params.impute,
 		params.filter_cv,

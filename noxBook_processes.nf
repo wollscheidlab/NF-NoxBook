@@ -35,6 +35,7 @@ process noxPapermill {
     val drop_samples
     val quantile_threshold
     val min_peptide_count
+    val peptide_missingness_cutoff
     val normalize
     val impute
     val filter_cv
@@ -59,6 +60,7 @@ process noxPapermill {
 	-p drop_samples "$drop_samples" \
 	-p quantile_threshold $quantile_threshold \
 	-p min_peptide_count $min_peptide_count \
+	-p peptide_missingness_cutoff $peptide_missingness_cutoff \
 	-p normalize $normalize \
 	-p impute $impute \
 	-p filter_cv $filter_cv \

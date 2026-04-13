@@ -20,6 +20,7 @@ workflow noxWorkflow {
     drop_samples
     quantile_threshold
     min_peptide_count
+    peptide_missingness_cutoff
     normalize
     impute
     filter_cv
@@ -67,6 +68,7 @@ workflow noxWorkflow {
 		 drop_samples,
                  quantile_threshold,
                  min_peptide_count,
+		 peptide_missingness_cutoff,
                  normalize,
                  impute,
                  filter_cv,
