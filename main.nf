@@ -43,7 +43,6 @@ workflow {
 
     noxWorkflow(params.experiment_annotation_fp,
 		params.template_ipynb,
-		params.class_label1,
 		params.class_label2,
 		params.input_folder,
 		params.fragpipe_workflow_fp,

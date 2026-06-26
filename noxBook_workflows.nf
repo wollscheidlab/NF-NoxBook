@@ -10,7 +10,6 @@ workflow noxWorkflow {
     take:
     experiment_annotation_fp
     template_ipynb
-    class_label1
     class_label2
     input_folder
     fragpipe_workflow_fp
@@ -31,21 +30,21 @@ workflow noxWorkflow {
     obo_filename
     
     main:
-    classes_fp = Channel.fromPath(file("$experiment_annotation_fp"))
+    classes_fp = channel.fromPath(file("$experiment_annotation_fp"))
         .splitCsv(sep: '\t', header: true)
         .map { row -> "${row.condition}" }  // Extract the condition column
     
     // Extract all classes from the FragPipe annotation file
     classes = classes_fp
         .splitText()
-        .map { it.trim() } // Strip newline characters
+        .map { line -> line.trim() } // Strip newline characters
         .unique() // Ensure unique classes
 
     // Generate combinations based on whether class_label2 is provided
     combinations = class_label2 ?
         // If class_label2 is provided, only compare experiment_annotation classes vs class_label2
         classes
-        .filter { it != class_label2 } // Exclude class_label2 from the experiment_annotation classes
+        .filter { cls -> cls != class_label2 } // Exclude class_label2 from the experiment_annotation classes
         .map { a -> 
             [a, class_label2] // No need to sort since we want class_label2 as the second element
         } :
