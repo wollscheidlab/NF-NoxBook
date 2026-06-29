@@ -42,11 +42,16 @@ workflow noxWorkflow {
 
     // Generate combinations based on whether class_label2 is provided
     combinations = class_label2 ?
-        // If class_label2 is provided, only compare experiment_annotation classes vs class_label2
+        // If class_label2 is provided, only compare
+        // experiment_annotation classes vs class_label2
         classes
-        .filter { cls -> cls != class_label2 } // Exclude class_label2 from the experiment_annotation classes
+        .filter { cls -> cls != class_label2 } // Exclude class_label2
+					       // from the
+					       // experiment_annotation
+					       // classes
         .map { a -> 
-            [a, class_label2] // No need to sort since we want class_label2 as the second element
+            [a, class_label2] // No need to sort since we want
+			      // class_label2 as the second element
         } :
         // Otherwise generate all pairwise combinations
         classes.combine(classes)
@@ -60,25 +65,27 @@ workflow noxWorkflow {
 
 
     // Prepare the ipynb for each binary class combination
-    noxPapermill(file("$baseDir/Notebooks/$template_ipynb"),
-                 combinations,
-		 fragpipe_workflow_fp,
-                 input_folder,
-                 uniprot_annotation_filename,
-                 surfy_filename,
-		 reduce_to_labels,
-		 drop_samples,
-                 quantile_threshold,
-                 min_peptide_count,
-		 peptide_missingness_cutoff,
-                 normalize,
-		 normalize_peptide,
-		 normalize_protein,
-                 impute,
-		 impute_protein,
-                 filter_cv,
-                 gaf_filename,
-                 obo_filename)
+    noxPapermill(
+	file("$baseDir/Notebooks/$template_ipynb"),
+        combinations,
+	fragpipe_workflow_fp,
+        input_folder,
+        uniprot_annotation_filename,
+        surfy_filename,
+	reduce_to_labels,
+	drop_samples,
+        quantile_threshold,
+        min_peptide_count,
+	peptide_missingness_cutoff,
+        normalize,
+	normalize_peptide,
+	normalize_protein,
+        impute,
+	impute_protein,
+        filter_cv,
+        gaf_filename,
+        obo_filename
+    )
 
     // Export them to html 
     nox_ipynb = noxPapermill.out.ipynb
